@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dashboard-text {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Dashboard</h1>
+        <div class="dashboard-text" id="dashboardText"></div>
+        <button id="logoutBtn">Logout</button>
+    </div>
+
+    <script>
+        // Check if the user is logged in. If not, redirect to the login page.
+        const loggedInUser = localStorage.getItem("loggedInUser");
+        if (!loggedInUser) {
+            window.location.href = "login.html";
+        } else {
+            const dashboardTextElement = document.getElementById("dashboardText");
+            dashboardTextElement.textContent = "Hello " + loggedInUser;
+        }
+
+        document.getElementById("logoutBtn").addEventListener("click", function() {
+            // Clear the stored user and redirect to the login page on logout.
+            localStorage.removeItem("loggedInUser");
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+</html>
